@@ -215,10 +215,9 @@ class Supervisor extends CI_Controller
         $data['user'] = $this->db->get_where('user', ['username' => $this->session->userdata('username')])->row_array();
         $this->load->model('Category_model', 'category_model');
         $data['nama_kategori'] = $this->db->get('category')->result_array();
-
-        
         $data['category'] = $this->category_model->getCategory();
         $data['datapelaporan'] = $this->klienpelaporan_model->getKlienPelaporan();
+
         $this->load->view('templates/header');
         $this->load->view('templates/supervisor_sidebar');
         $this->load->view('supervisor/pelaporan', $data);
@@ -230,11 +229,10 @@ class Supervisor extends CI_Controller
         $this->load->model('Klienpelaporan_model', 'klienpelaporan_model');
         // $data['kategori'] = $this->db->get('pelaporan')->result_array();
         $data['category'] = $this->category_model->getCategory();
-        
         $this->load->model('User_model', 'user_model');
         $data['user'] = $this->user_model->getDataUser();
-
         $data['datapelaporan'] = $this->klienpelaporan_model->getKlienPelaporan();
+        
         $this->load->view('templates/header');
         $this->load->view('templates/supervisor_sidebar');
         $this->load->view('supervisor/allticket', $data);
@@ -246,11 +244,10 @@ class Supervisor extends CI_Controller
         $this->load->model('Klienpelaporan_model', 'klienpelaporan_model');
         // $data['kategori'] = $this->db->get('pelaporan')->result_array();
         $data['category'] = $this->category_model->getCategory();
-        
         $this->load->model('User_model', 'user_model');
         $data['user'] = $this->user_model->getDataUser();
-
         $data['datapelaporan'] = $this->klienpelaporan_model->getKlienPelaporanAdd();
+
         $this->load->view('templates/header');
         $this->load->view('templates/supervisor_sidebar');
         $this->load->view('supervisor/pelaporan_added', $data);
@@ -265,6 +262,7 @@ class Supervisor extends CI_Controller
         $this->load->model('User_model', 'user_model');
         $data['user'] = $this->user_model->getDataUser();
         $data['datapelaporan'] = $this->klienpelaporan_model->getKlienPelaporanOP();
+
         $this->load->view('templates/header');
         $this->load->view('templates/supervisor_sidebar');
         $this->load->view('supervisor/pelaporan_onprogress', $data);
@@ -279,6 +277,7 @@ class Supervisor extends CI_Controller
         $this->load->model('User_model', 'user_model');
         $data['user'] = $this->user_model->getDataUser();
         $data['datapelaporan'] = $this->klienpelaporan_model->getKlienPelaporanClose();
+
         $this->load->view('templates/header');
         $this->load->view('templates/supervisor_sidebar');
         $this->load->view('supervisor/pelaporan_close', $data);
@@ -293,6 +292,7 @@ class Supervisor extends CI_Controller
         $this->load->model('User_model', 'user_model');
         $data['user'] = $this->user_model->getDataUser();
         $data['datapelaporan'] = $this->klienpelaporan_model->getKlienPelaporanFinish();
+
         $this->load->view('templates/header');
         $this->load->view('templates/supervisor_sidebar');
         $this->load->view('supervisor/pelaporan_finish', $data);
@@ -442,10 +442,8 @@ class Supervisor extends CI_Controller
           $sql = "UPDATE pelaporan SET status_ccs='HANDLE', status='Forward To Helpdesk 2' WHERE id=$id";
           $this->db->query($sql);
           $this->session->set_flashdata('pesan', 'Forward Success!');
-        //   $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">  Data Telah Disetujui<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>');
-        //   $referred_from = $this->session->userdata('referred_from');
-        //   redirect($referred_from, 'refresh');
-        redirect('supervisor/onprogress');
+
+         redirect('supervisor/onprogress');
       }
 
       public function forwardtoHD3($id)
@@ -457,7 +455,7 @@ class Supervisor extends CI_Controller
           $sql = "UPDATE pelaporan SET status_ccs='HANDLE', status='Forward To Helpdesk 3' WHERE id=$id";
           $this->db->query($sql);
           $this->session->set_flashdata('pesan', 'Forward Success!');
-        //   
+        
         redirect('supervisor/onprogress');
       }
 
@@ -470,9 +468,7 @@ class Supervisor extends CI_Controller
            $sql = "UPDATE pelaporan SET status_ccs='HANDLE', status='Forward To Helpdesk 4' WHERE id=$id";
            $this->db->query($sql);
            $this->session->set_flashdata('pesan', 'Forward Success!');
-        //    $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">  Data Telah Disetujui<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>');
-        //    $referred_from = $this->session->userdata('referred_from');
-        //    redirect($referred_from, 'refresh');
+
         redirect('supervisor/onprogress');
        }
 
@@ -485,29 +481,25 @@ class Supervisor extends CI_Controller
            $now = date('Y-m-d');
   
   
-           $id = $this->input->post('id');
-           $no_tiket = $this->input->post('no_tiket');
+           $id         = $this->input->post('id');
+           $no_tiket   = $this->input->post('no_tiket');
         //    $waktu_pelaporan = $this->input->post('waktu_pelaporan');
-           $nama = $this->input->post('nama');
-           $perihal = $this->input->post('perihal');
+           $nama       = $this->input->post('nama');
+           $perihal    = $this->input->post('perihal');
            $status_ccs ='FINISH';
-           $waktu = date('Y-m-d');
-           $ArrUpdate = array(
+           $waktu      = date('Y-m-d');
+           $ArrUpdate  = array(
    
-               'no_tiket' => $no_tiket,
+               'no_tiket'       => $no_tiket,
             //    'waktu_pelaporan' => $waktu_pelaporan,
-               'nama' => $nama,
-               'perihal' => $perihal,
-               'status_ccs' => $status_ccs,
-               'waktu_approve' =>$waktu
+               'nama'           => $nama,
+               'perihal'        => $perihal,
+               'status_ccs'     => $status_ccs,
+               'waktu_approve'  =>$waktu
    
            );
            $this->pelaporan_model->approveSPV($id, $ArrUpdate);
-        //    $this->session->set_flashdata('pesan', 'Successfully Approve!');
-        //    $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Data Disetujui!</div>');
-        //    Redirect('admin', 'refresh');
-        //    $referred_from = $this->session->userdata('referred_from');
-        //    redirect($referred_from, 'refresh');
+    
            redirect('supervisor/finish');
 
            
@@ -520,29 +512,28 @@ class Supervisor extends CI_Controller
             # add your city to set local time zone
    
    
-            $id = $this->input->post('id');
-            $no_tiket = $this->input->post('no_tiket');
+            $id              = $this->input->post('id');
+            $no_tiket        = $this->input->post('no_tiket');
             $waktu_pelaporan = $this->input->post('waktu_pelaporan');
-            $nama = $this->input->post('nama');
-            $perihal = $this->input->post('perihal');
-            $status = 'Forward To Helpdesk 1';
-            $status_ccs ='HANDLE';
-            $keterangan = $this->input->post('keterangan');
-            $ArrUpdate = array(
+            $nama            = $this->input->post('nama');
+            $perihal         = $this->input->post('perihal');
+            $status          = 'Forward To Helpdesk 1';
+            $status_ccs      ='HANDLE';
+            $keterangan      = $this->input->post('keterangan');
+            $ArrUpdate       = array(
     
-                'no_tiket' => $no_tiket,
+                'no_tiket'        => $no_tiket,
                 'waktu_pelaporan' => $waktu_pelaporan,
-                'nama' => $nama,
-                'perihal' => $perihal,
-                'status' => $status,
-                'status_ccs' => $status_ccs,
-                'keterangan' => $keterangan
+                'nama'            => $nama,
+                'perihal'         => $perihal,
+                'status'          => $status,
+                'status_ccs'      => $status_ccs,
+                'keterangan'      => $keterangan
     
             );
             $this->pelaporan_model->rejecthd1($id, $ArrUpdate);
             $this->session->set_flashdata('pesan', 'Successfully Approve!');
-            // $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Data Disetujui!</div>');
-            // Redirect('admin', 'refresh');
+            
             $referred_from = $this->session->userdata('referred_from');
             redirect($referred_from, 'refresh');
  
@@ -554,31 +545,29 @@ class Supervisor extends CI_Controller
             // date_default_timezone_set('Asia/Jakarta');
              # add your city to set local time zone
     
-    
-             $id = $this->input->post('id');
-             $no_tiket = $this->input->post('no_tiket');
+             $id              = $this->input->post('id');
+             $no_tiket        = $this->input->post('no_tiket');
              $waktu_pelaporan = $this->input->post('waktu_pelaporan');
-             $nama = $this->input->post('nama');
-             $perihal = $this->input->post('perihal');
-             $status = 'Forward To Helpdesk 2';
-             $status_ccs ='HANDLE';
-             $keterangan = $this->input->post('keterangan');
-             $ArrUpdate = array(
+             $nama            = $this->input->post('nama');
+             $perihal         = $this->input->post('perihal');
+             $status          = 'Forward To Helpdesk 2';
+             $status_ccs      ='HANDLE';
+             $keterangan      = $this->input->post('keterangan');
+             $ArrUpdate       = array(
      
-                 'no_tiket' => $no_tiket,
+                 'no_tiket'        => $no_tiket,
                  'waktu_pelaporan' => $waktu_pelaporan,
-                 'nama' => $nama,
-                 'perihal' => $perihal,
-                 'status' => $status,
-                 'status_ccs' => $status_ccs,
-                 'keterangan' => $keterangan
+                 'nama'            => $nama,
+                 'perihal'         => $perihal,
+                 'status'          => $status,
+                 'status_ccs'      => $status_ccs,
+                 'keterangan'      => $keterangan
      
              );
              $this->pelaporan_model->rejecthd2($id, $ArrUpdate);
              $this->session->set_flashdata('pesan', 'Successfully Approve!');
-             // $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Data Disetujui!</div>');
-             // Redirect('admin', 'refresh');
              $referred_from = $this->session->userdata('referred_from');
+
              redirect($referred_from, 'refresh');
   
              
@@ -588,31 +577,27 @@ class Supervisor extends CI_Controller
          {
              // date_default_timezone_set('Asia/Jakarta');
               # add your city to set local time zone
-     
-     
-              $id = $this->input->post('id');
-              $no_tiket = $this->input->post('no_tiket');
+              $id              = $this->input->post('id');
+              $no_tiket        = $this->input->post('no_tiket');
               $waktu_pelaporan = $this->input->post('waktu_pelaporan');
-              $nama = $this->input->post('nama');
-              $perihal = $this->input->post('perihal');
-              $status = 'Forward To Helpdesk 3';
-              $status_ccs ='HANDLE';
-              $keterangan = $this->input->post('keterangan');
-              $ArrUpdate = array(
+              $nama            = $this->input->post('nama');
+              $perihal         = $this->input->post('perihal');
+              $status          = 'Forward To Helpdesk 3';
+              $status_ccs      ='HANDLE';
+              $keterangan      = $this->input->post('keterangan');
+              $ArrUpdate       = array(
       
-                  'no_tiket' => $no_tiket,
+                  'no_tiket'        => $no_tiket,
                   'waktu_pelaporan' => $waktu_pelaporan,
-                  'nama' => $nama,
-                  'perihal' => $perihal,
-                  'status' => $status,
-                  'status_ccs' => $status_ccs,
-                  'keterangan' => $keterangan
+                  'nama'            => $nama,
+                  'perihal'         => $perihal,
+                  'status'          => $status,
+                  'status_ccs'      => $status_ccs,
+                  'keterangan'      => $keterangan
       
               );
               $this->pelaporan_model->rejecthd3($id, $ArrUpdate);
               $this->session->set_flashdata('pesan', 'Successfully Approve!');
-              // $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Data Disetujui!</div>');
-              // Redirect('admin', 'refresh');
               $referred_from = $this->session->userdata('referred_from');
               redirect($referred_from, 'refresh');
    
@@ -624,31 +609,27 @@ class Supervisor extends CI_Controller
          {
              // date_default_timezone_set('Asia/Jakarta');
               # add your city to set local time zone
-     
-     
-              $id = $this->input->post('id');
-              $no_tiket = $this->input->post('no_tiket');
+              $id              = $this->input->post('id');
+              $no_tiket        = $this->input->post('no_tiket');
               $waktu_pelaporan = $this->input->post('waktu_pelaporan');
-              $nama = $this->input->post('nama');
-              $perihal = $this->input->post('perihal');
-              $status = 'Forward To Helpdesk 4';
-              $status_ccs ='HANDLE';
-              $keterangan = $this->input->post('keterangan');
-              $ArrUpdate = array(
+              $nama            = $this->input->post('nama');
+              $perihal         = $this->input->post('perihal');
+              $status          = 'Forward To Helpdesk 4';
+              $status_ccs      ='HANDLE';
+              $keterangan      = $this->input->post('keterangan');
+              $ArrUpdate       = array(
       
-                  'no_tiket' => $no_tiket,
+                  'no_tiket'        => $no_tiket,
                   'waktu_pelaporan' => $waktu_pelaporan,
-                  'nama' => $nama,
-                  'perihal' => $perihal,
-                  'status' => $status,
-                  'status_ccs' => $status_ccs,
-                  'keterangan' => $keterangan
+                  'nama'            => $nama,
+                  'perihal'         => $perihal,
+                  'status'          => $status,
+                  'status_ccs'      => $status_ccs,
+                  'keterangan'      => $keterangan
       
               );
               $this->pelaporan_model->rejecthd4($id, $ArrUpdate);
               $this->session->set_flashdata('pesan', 'Successfully Approve!');
-              // $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Data Disetujui!</div>');
-              // Redirect('admin', 'refresh');
               $referred_from = $this->session->userdata('referred_from');
               redirect($referred_from, 'refresh');
    
@@ -661,8 +642,6 @@ class Supervisor extends CI_Controller
             $this->load->model('Client_model', 'client_model');
             $this->load->model('Pelaporan_model', 'pelaporan_model');
             $data['pencarian_data'] = $this->pelaporan_model->getAll();
-
-            
             $data['klien'] = $this->client_model->getClient();
     
             $this->load->view('templates/header');
@@ -673,12 +652,12 @@ class Supervisor extends CI_Controller
 
         public function datepelaporan()
         {
-            $tgla = $this->input->post('tgla');
-            $tglb = $this->input->post('tglb');
+            $tgla       = $this->input->post('tgla');
+            $tglb       = $this->input->post('tglb');
             $status_ccs = $this->input->post('status_ccs');
             $nama_klien = $this->input->post('nama_klien');
-            $this->load->model('Pelaporan_model', 'pelaporan_model');
 
+            $this->load->model('Pelaporan_model', 'pelaporan_model');
             $data['klien'] = $this->client_model->getClient();
             $data['pencarian_data'] = $this->pelaporan_model->getDate($tgla, $tglb, $status_ccs, $nama_klien);
     
@@ -696,8 +675,6 @@ class Supervisor extends CI_Controller
             $this->load->model('Category_model', 'category_model');
             $this->load->model('Pelaporan_model', 'pelaporan_model');
             $data['pencarian_data'] = $this->pelaporan_model->getAllCategory();
-
-            
             $data['category'] = $this->category_model->getCategory();
     
             $this->load->view('templates/header');
@@ -712,7 +689,6 @@ class Supervisor extends CI_Controller
             $tglb = $this->input->post('tglb');
             // $nama_kategori = $this->input->post('nama_kategori');
             $this->load->model('Pelaporan_model', 'pelaporan_model');
-    
             $data['category'] = $this->category_model->getCategory();
             $data['pencarian_data'] = $this->pelaporan_model->getDateKategori($tgla, $tglb);
     
@@ -759,7 +735,6 @@ class Supervisor extends CI_Controller
             $tgla = $this->input->post('tgla');
             $tglb = $this->input->post('tglb');
             $this->load->model('Pelaporan_model', 'pelaporan_model');
-
             $data['pencarian_data'] = $this->pelaporan_model->getDateHelpdesk($tgla, $tglb);
     
     
@@ -788,7 +763,6 @@ class Supervisor extends CI_Controller
             $tglb = $this->input->post('tglb');
             $status_ccs = $this->input->post('status_ccs');
             $this->load->model('Pelaporan_model', 'pelaporan_model');
-
             $data['pencarian_data'] = $this->pelaporan_model->getDateProgres($tgla, $tglb,$status_ccs);
             
             $this->load->view('templates/header');

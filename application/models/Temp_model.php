@@ -29,6 +29,4 @@ class Temp_model extends CI_Model
         $this->db->delete('tiket_temp');
     }
 
-    
-
 }

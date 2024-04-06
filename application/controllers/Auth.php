@@ -72,11 +72,11 @@ class Auth extends CI_Controller
 
                 foreach ($cek->result() as $ck) {
                     $sess_data['username'] = $ck->username;
-                    $sess_data['nama'] = $ck->nama;
-                    $sess_data['divisi'] = $ck->divisi;
-                    $sess_data['role'] = $ck->role;
-                    $sess_data['id'] = $ck->id;
-                    $sess_data['active'] = $ck->active;
+                    $sess_data['nama']     = $ck->nama;
+                    $sess_data['divisi']   = $ck->divisi;
+                    $sess_data['role']     = $ck->role;
+                    $sess_data['id']       = $ck->id;
+                    $sess_data['active']   = $ck->active;
 
                     $this->session->set_userdata($sess_data);
                 }
@@ -226,8 +226,8 @@ class Auth extends CI_Controller
             $this->load->view('templates/auth_footer');
         } else {
             $password = $this->input->post('password');
-            $email = $this->session->userdata('reset_email');
-            $pass = MD5($password);
+            $email    = $this->session->userdata('reset_email');
+            $pass     = MD5($password);
             
             $this->db->set('password', $pass);
             $this->db->where('email', $email);

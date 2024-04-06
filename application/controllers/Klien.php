@@ -42,12 +42,12 @@ class Klien extends CI_Controller
                 redirect($referred_from, 'refresh');
             }
         }
-        $data = [
+        $data          = [
             'no_tiket' => $this->input->post('no_tiket'),
-            'perihal' => $this->input->post('perihal'),
-            'file' => $photo,
-            'user_id' => $this->input->post('user_id'),
-            'nama' => $this->input->post('nama'),
+            'perihal'  => $this->input->post('perihal'),
+            'file'     => $photo,
+            'user_id'  => $this->input->post('user_id'),
+            'nama'     => $this->input->post('nama'),
             'kategori' => $this->input->post('kategori')
 
         ];
@@ -78,8 +78,8 @@ class Klien extends CI_Controller
     {
         $this->load->model('Temp_model', 'temp_model');
         $data['nama_kateogori'] = $this->db->get('tiket_temp')->result_array();
-
         $data['tiket_temp'] = $this->temp_model->getTiketTemp();
+
         $this->load->view('templates/header');
         $this->load->view('templates/klien_sidebar');
         $this->load->view('klien/pengajuan', $data);
@@ -94,9 +94,9 @@ class Klien extends CI_Controller
         $data['nama_kategori'] = $this->db->get('category')->result_array();
         $this->load->model('Temp_model', 'temp_model');
         $data['nama_kategori'] = $this->db->get('tiket_temp')->result_array();
-        
         $data['category'] = $this->category_model->getCategory();
         $data['tiket_temp'] = $this->temp_model->getTiketTemp1();
+
         $this->load->view('templates/header');
         $this->load->view('templates/klien_sidebar');
         $this->load->view('klien/pengajuan', $data);
@@ -109,6 +109,7 @@ class Klien extends CI_Controller
         $this->load->model('Klienpelaporan_model', 'klienpelaporan_model');
         // $data['nama_kategori'] = $this->db->get('pelaporan')->result_array();
         $data['datapelaporan'] = $this->klienpelaporan_model->getKlienPelaporanTemp();
+        
         $this->load->view('templates/header');
         $this->load->view('templates/klien_sidebar');
         $this->load->view('klien/data_pelaporan', $data);

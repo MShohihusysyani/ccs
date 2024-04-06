@@ -22,11 +22,14 @@ class Helpdesk3 extends CI_Controller
     {
         $data['user'] = $this->db->get_where('user', ['username' => $this->session->userdata('username')])->row_array();
         $this->load->model('Klienpelaporan_model', 'klienpelaporan_model');
+
         // $data['nama_kategori'] = $this->db->get('pelaporan')->result_array();
         // $data['category'] = $this->category_model->getNamakategori();
+
         $this->load->model('User_model', 'user_model');
         $data['user'] = $this->user_model->getDataUser();
         $data['datapelaporan'] = $this->klienpelaporan_model->getKlienPelaporanHD3();
+
         $this->load->view('templates/header');
         $this->load->view('templates/helpdesk3_sidebar');
         $this->load->view('helpdesk3/pelaporan', $data);
@@ -37,11 +40,14 @@ class Helpdesk3 extends CI_Controller
     {
         $data['user'] = $this->db->get_where('user', ['username' => $this->session->userdata('username')])->row_array();
         $this->load->model('Klienpelaporan_model', 'klienpelaporan_model');
+
         // $data['nama_kategori'] = $this->db->get('pelaporan')->result_array();
         // $data['category'] = $this->category_model->getNamakategori();
+
         $this->load->model('User_model', 'user_model');
         $data['user'] = $this->user_model->getDataUser();
         $data['datapelaporan'] = $this->klienpelaporan_model->getDataPelaporanHD3();
+
         $this->load->view('templates/header');
         $this->load->view('templates/helpdesk3_sidebar');
         $this->load->view('helpdesk3/data_pelaporan', $data);
@@ -55,26 +61,25 @@ class Helpdesk3 extends CI_Controller
             # add your city to set local time zone
    
    
-            $id = $this->input->post('id');
-   
-            $no_tiket = $this->input->post('no_tiket');
+            $id              = $this->input->post('id');
+            $no_tiket        = $this->input->post('no_tiket');
             $waktu_pelaporan = $this->input->post('waktu_pelaporan');
-            $nama = $this->input->post('nama');
-            $perihal = $this->input->post('perihal');
-            $status = 'Solved by HD3';
-            $status_ccs ='CLOSE';
-            $keterangan = $this->input->post('keterangan');
-            $handle_by = $this->input->post('handle_by');
-            $ArrUpdate = array(
+            $nama            = $this->input->post('nama');
+            $perihal         = $this->input->post('perihal');
+            $status          = 'Solved by HD3';
+            $status_ccs      ='CLOSE';
+            $keterangan      = $this->input->post('keterangan');
+            $handle_by       = $this->input->post('handle_by');
+            $ArrUpdate       = array(
     
-                'no_tiket' => $no_tiket,
+                'no_tiket'        => $no_tiket,
                 'waktu_pelaporan' => $waktu_pelaporan,
-                'nama' => $nama,
-                'perihal' => $perihal,
-                'status' => $status,
-                'status_ccs' => $status_ccs,
-                'handle_by' => $handle_by,
-                'keterangan' => $keterangan
+                'nama'            => $nama,
+                'perihal'         => $perihal,
+                'status'          => $status,
+                'status_ccs'      => $status_ccs,
+                'handle_by'       => $handle_by,
+                'keterangan'      => $keterangan
     
             );
             $this->pelaporan_model->updateHD1($id, $ArrUpdate);
@@ -93,26 +98,25 @@ class Helpdesk3 extends CI_Controller
     
     
    
-             $id = $this->input->post('id');
-   
-             $no_tiket = $this->input->post('no_tiket');
+             $id              = $this->input->post('id');
+             $no_tiket        = $this->input->post('no_tiket');
              $waktu_pelaporan = $this->input->post('waktu_pelaporan');
-             $nama = $this->input->post('nama');
-             $perihal = $this->input->post('perihal');
-             $status = 'Forward From Helpdesk 3';
-             $status_ccs ='HANDLE';
-             $handle_by = $this->input->post('handle_by');
-             $keterangan = $this->input->post('keterangan');
-             $ArrUpdate = array(
+             $nama            = $this->input->post('nama');
+             $perihal         = $this->input->post('perihal');
+             $status          = 'Forward From Helpdesk 3';
+             $status_ccs      ='HANDLE';
+             $handle_by       = $this->input->post('handle_by');
+             $keterangan      = $this->input->post('keterangan');
+             $ArrUpdate       = array(
      
-                 'no_tiket' => $no_tiket,
+                 'no_tiket'        => $no_tiket,
                  'waktu_pelaporan' => $waktu_pelaporan,
-                 'nama' => $nama,
-                 'perihal' => $perihal,
-                 'status' => $status,
-                 'status_ccs' => $status_ccs,
-                 'handle_by' => $handle_by,
-                 'keterangan' => $keterangan
+                 'nama'            => $nama,
+                 'perihal'         => $perihal,
+                 'status'          => $status,
+                 'status_ccs'      => $status_ccs,
+                 'handle_by'       => $handle_by,
+                 'keterangan'      => $keterangan
      
              );
              $this->pelaporan_model->updateForward($id, $ArrUpdate);
