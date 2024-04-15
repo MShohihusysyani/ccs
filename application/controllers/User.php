@@ -46,13 +46,45 @@ class User extends CI_Controller
     }
 
     
-    public function profile_helpdesk($id)
+    public function profile_hd1($id)
     {
         $this->load->model('User_model', 'user_model');
         $data['user'] = $this->user_model->getUserDetail($id);
 
         $this->load->view('templates/header');
         $this->load->view('templates/helpdesk_sidebar');
+        $this->load->view('profile/profile', $data);
+        $this->load->view('templates/footer');
+    }
+    public function profile_hd2($id)
+    {
+        $this->load->model('User_model', 'user_model');
+        $data['user'] = $this->user_model->getUserDetail($id);
+
+        $this->load->view('templates/header');
+        $this->load->view('templates/helpdesk2_sidebar');
+        $this->load->view('profile/profile', $data);
+        $this->load->view('templates/footer');
+    }
+
+    public function profile_hd3($id)
+    {
+        $this->load->model('User_model', 'user_model');
+        $data['user'] = $this->user_model->getUserDetail($id);
+
+        $this->load->view('templates/header');
+        $this->load->view('templates/helpdesk3_sidebar');
+        $this->load->view('profile/profile', $data);
+        $this->load->view('templates/footer');
+    }
+
+    public function profile_hd4($id)
+    {
+        $this->load->model('User_model', 'user_model');
+        $data['user'] = $this->user_model->getUserDetail($id);
+
+        $this->load->view('templates/header');
+        $this->load->view('templates/helpdesk4_sidebar');
         $this->load->view('profile/profile', $data);
         $this->load->view('templates/footer');
     }
@@ -242,7 +274,7 @@ class User extends CI_Controller
         }
     }
 
-    public function changepassword_helpdesk()
+    public function changepassword_hd1()
     {
         $data['user'] = $this->db->get_where('user', ['id' => $this->session->userdata('id')])->row_array();
 
@@ -253,7 +285,7 @@ class User extends CI_Controller
         if ($this->form_validation->run() == false) {
             $this->load->view('templates/header');
             $this->load->view('templates/helpdesk_sidebar');
-            $this->load->view('profile/changepassword_helpdesk', $data);
+            $this->load->view('profile/changepassword_hd1', $data);
             $this->load->view('templates/footer');
         } else {
             $current_passwordmd5 = $this->input->post('current_password');
@@ -262,16 +294,118 @@ class User extends CI_Controller
             $new_password = MD5($new_passwordmd5);
             if ($current_password != $data['user']['password']) {
                 $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert"> <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>Wrong current password!</div>');
-                redirect('user/changepassword_helpdesk');
+                redirect('user/changepassword_hd1');
             } else if ($current_password == $new_password) {
                 $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert"> <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>New password cannot be the same as current password!</div>');
-                redirect('user/changepassword_helpdesk');
+                redirect('user/changepassword_hd1');
             } else {
                 $this->db->set('password', $new_password);
                 $this->db->where('id', $this->session->userdata('id'));
                 $this->db->update('user');
                 $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert"> <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>Password Changed!</div>');
-                redirect('user/changepassword_helpdesk');
+                redirect('user/changepassword_hd1');
+            }
+        }
+    }
+
+    public function changepassword_hd2()
+    {
+        $data['user'] = $this->db->get_where('user', ['id' => $this->session->userdata('id')])->row_array();
+
+        $this->form_validation->set_rules('current_password', 'Current Password', 'required|trim');
+        $this->form_validation->set_rules('new_password1', 'New Password', 'required|trim|min_length[8]|matches[new_password2]');
+        $this->form_validation->set_rules('new_password2', 'Confirm New Password', 'required|trim|min_length[8]|matches[new_password1]');
+
+        if ($this->form_validation->run() == false) {
+            $this->load->view('templates/header');
+            $this->load->view('templates/helpdesk2_sidebar');
+            $this->load->view('profile/changepassword_hd2', $data);
+            $this->load->view('templates/footer');
+        } else {
+            $current_passwordmd5 = $this->input->post('current_password');
+            $new_passwordmd5 = $this->input->post('new_password1');
+            $current_password = MD5($current_passwordmd5);
+            $new_password = MD5($new_passwordmd5);
+            if ($current_password != $data['user']['password']) {
+                $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert"> <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>Wrong current password!</div>');
+                redirect('user/changepassword_hd2');
+            } else if ($current_password == $new_password) {
+                $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert"> <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>New password cannot be the same as current password!</div>');
+                redirect('user/changepassword_hd2');
+            } else {
+                $this->db->set('password', $new_password);
+                $this->db->where('id', $this->session->userdata('id'));
+                $this->db->update('user');
+                $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert"> <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>Password Changed!</div>');
+                redirect('user/changepassword_hd2');
+            }
+        }
+    }
+
+    public function changepassword_hd3()
+    {
+        $data['user'] = $this->db->get_where('user', ['id' => $this->session->userdata('id')])->row_array();
+
+        $this->form_validation->set_rules('current_password', 'Current Password', 'required|trim');
+        $this->form_validation->set_rules('new_password1', 'New Password', 'required|trim|min_length[8]|matches[new_password2]');
+        $this->form_validation->set_rules('new_password2', 'Confirm New Password', 'required|trim|min_length[8]|matches[new_password1]');
+
+        if ($this->form_validation->run() == false) {
+            $this->load->view('templates/header');
+            $this->load->view('templates/helpdesk3_sidebar');
+            $this->load->view('profile/changepassword_hd3', $data);
+            $this->load->view('templates/footer');
+        } else {
+            $current_passwordmd5 = $this->input->post('current_password');
+            $new_passwordmd5 = $this->input->post('new_password1');
+            $current_password = MD5($current_passwordmd5);
+            $new_password = MD5($new_passwordmd5);
+            if ($current_password != $data['user']['password']) {
+                $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert"> <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>Wrong current password!</div>');
+                redirect('user/changepassword_hd3');
+            } else if ($current_password == $new_password) {
+                $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert"> <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>New password cannot be the same as current password!</div>');
+                redirect('user/changepassword_hd3');
+            } else {
+                $this->db->set('password', $new_password);
+                $this->db->where('id', $this->session->userdata('id'));
+                $this->db->update('user');
+                $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert"> <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>Password Changed!</div>');
+                redirect('user/changepassword_hd3');
+            }
+        }
+    }
+
+    public function changepassword_hd4()
+    {
+        $data['user'] = $this->db->get_where('user', ['id' => $this->session->userdata('id')])->row_array();
+
+        $this->form_validation->set_rules('current_password', 'Current Password', 'required|trim');
+        $this->form_validation->set_rules('new_password1', 'New Password', 'required|trim|min_length[8]|matches[new_password2]');
+        $this->form_validation->set_rules('new_password2', 'Confirm New Password', 'required|trim|min_length[8]|matches[new_password1]');
+
+        if ($this->form_validation->run() == false) {
+            $this->load->view('templates/header');
+            $this->load->view('templates/helpdesk4_sidebar');
+            $this->load->view('profile/changepassword_hd4', $data);
+            $this->load->view('templates/footer');
+        } else {
+            $current_passwordmd5 = $this->input->post('current_password');
+            $new_passwordmd5 = $this->input->post('new_password1');
+            $current_password = MD5($current_passwordmd5);
+            $new_password = MD5($new_passwordmd5);
+            if ($current_password != $data['user']['password']) {
+                $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert"> <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>Wrong current password!</div>');
+                redirect('user/changepassword_hd4');
+            } else if ($current_password == $new_password) {
+                $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert"> <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>New password cannot be the same as current password!</div>');
+                redirect('user/changepassword_hd4');
+            } else {
+                $this->db->set('password', $new_password);
+                $this->db->where('id', $this->session->userdata('id'));
+                $this->db->update('user');
+                $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert"> <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>Password Changed!</div>');
+                redirect('user/changepassword_hd4');
             }
         }
     }

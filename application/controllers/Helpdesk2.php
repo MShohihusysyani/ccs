@@ -83,10 +83,6 @@ class Helpdesk2 extends CI_Controller
             );
             $this->pelaporan_model->updateHD1($id, $ArrUpdate);
             $this->session->set_flashdata('pesan', 'Successfully Finish!');
-            // $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Data Disetujui!</div>');
-            // Redirect('admin', 'refresh');
-            // $referred_from = $this->session->userdata('referred_from');
-            // redirect($referred_from, 'refresh');
             redirect('helpdesk2/pelaporan');
         }
 
@@ -121,8 +117,6 @@ class Helpdesk2 extends CI_Controller
             );
             $this->pelaporan_model->updateForward($id, $ArrUpdate);
             $this->session->set_flashdata('pesan', 'Successfully Finish!');
-            // $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Data Disetujui!</div>');
-            // Redirect('admin', 'refresh');
             $referred_from = $this->session->userdata('referred_from');
             redirect($referred_from, 'refresh');
 

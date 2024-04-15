@@ -59,13 +59,14 @@
                                                 <div class="demo-google-material-icon" data-toggle="modal"
                                                     data-target="#editModal<?= $cln['id']; ?>"> <i
                                                         class="material-icons">edit</i> <span
-                                                        class="icon-name">Edit</span>
+                                                        class="icon-name"></span>
                                                 </div>
                                             </div>
                                             <a class="btn btn-sm btn-danger waves-effect " data-type="success"
-                                                href="<?= base_url() ?>supervisor/hapus_klien/<?= $cln['id']; ?>"><span
-                                                    class="fa fa-trash tombol-hapus"></span>
-                                                Hapus</a>
+                                                href="<?= base_url() ?>supervisor/hapus_klien/<?= $cln['id']; ?>"><i
+                                                        class="material-icons">delete</i> <span
+                                                        class="icon-name"></span>
+                                            </a>
 
                                             <!-- <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
                                                 <p>A warning message, with a function attached to the <b>Confirm</b>

@@ -67,7 +67,7 @@ class Helpdesk4 extends CI_Controller
             $nama            = $this->input->post('nama');
             $perihal         = $this->input->post('perihal');
             $status          = 'Solved by HD4';
-            $status_ccs      ='CLOSE';
+            $status_ccs      = 'CLOSE';
             $handle_by       = $this->input->post('handle_by');
             $keterangan      = $this->input->post('keterangan');
             $ArrUpdate       = array(
@@ -84,10 +84,7 @@ class Helpdesk4 extends CI_Controller
             );
             $this->pelaporan_model->updateHD4($id, $ArrUpdate);
             $this->session->set_flashdata('pesan', 'Successfully Finish!');
-            // $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Data Disetujui!</div>');
-            // Redirect('admin', 'refresh');
-            // $referred_from = $this->session->userdata('referred_from');
-            // redirect($referred_from, 'refresh');
+         
             redirect('helpdesk4/pelaporan');
         }
 
@@ -122,8 +119,7 @@ class Helpdesk4 extends CI_Controller
              );
              $this->pelaporan_model->updateForward($id, $ArrUpdate);
              $this->session->set_flashdata('pesan', 'Successfully Finish!');
-             // $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Data Disetujui!</div>');
-             // Redirect('admin', 'refresh');
+           
              $referred_from = $this->session->userdata('referred_from');
              redirect($referred_from, 'refresh');
  

@@ -53,9 +53,9 @@ class Supervisor extends CI_Controller
 
     public function edit_kategori()
     {
-        $id = $this->input->post('id');
+        $id            = $this->input->post('id');
         $nama_kategori = $this->input->post('nama_kategori');
-        $ArrUpdate = array(
+        $ArrUpdate     = array(
             'nama_kategori' => $nama_kategori
         );
         $this->category_model->updateKategori($id, $ArrUpdate);
@@ -83,13 +83,13 @@ class Supervisor extends CI_Controller
 
     public function tambah_client()
     {
-        $data['no_urut'] = $this->db->get('klien')->result_array();
+        $data['no_urut']    = $this->db->get('klien')->result_array();
         $data['nama_klien'] = $this->db->get('klien')->result_array();
 
         $this->form_validation->set_rules('no_urut', 'No Urut', 'required');
         $this->form_validation->set_rules('nama_klien', 'Kategory', 'required');
         $data = [
-            'no_urut' => $this->input->post('no_urut'),
+            'no_urut'    => $this->input->post('no_urut'),
             'nama_klien' => $this->input->post('nama_klien')
         ];
         $this->db->insert('klien', $data);
@@ -106,11 +106,11 @@ class Supervisor extends CI_Controller
 
     public function edit_klien()
     {
-        $id = $this->input->post('id');
-        $no_urut = $this->input->post('no_urut');
+        $id         = $this->input->post('id');
+        $no_urut    = $this->input->post('no_urut');
         $nama_klien = $this->input->post('nama_klien');
-        $ArrUpdate = array(
-            'no_urut' => $no_urut,
+        $ArrUpdate  = array(
+            'no_urut'    => $no_urut,
             'nama_klien' => $nama_klien
         );
         $this->client_model->updateKlien($id, $ArrUpdate);
@@ -123,10 +123,10 @@ class Supervisor extends CI_Controller
     public function user(){
 
         $this->load->model('Usermaster_model', 'usermaster_model');
-        $data['divisi'] = $this->db->get('user')->result_array();
-        $data['nama'] = $this->db->get('user')->result_array();
-        $data['username'] = $this->db->get('user')->result_array();
-        $data['active'] = $this->db->get('user')->result_array();
+        $data['divisi']     = $this->db->get('user')->result_array();
+        $data['nama']       = $this->db->get('user')->result_array();
+        $data['username']   = $this->db->get('user')->result_array();
+        $data['active']     = $this->db->get('user')->result_array();
         $this->load->model('Client_model', 'client_model');
         $data['nama_klien'] = $this->db->get('klien')->result_array();
 
@@ -142,12 +142,12 @@ class Supervisor extends CI_Controller
 
     public function tambah_user()
     {
-        $data['divisi'] = $this->db->get('user')->result_array();
-        $data['nama'] = $this->db->get('user')->result_array();
+        $data['divisi']   = $this->db->get('user')->result_array();
+        $data['nama']     = $this->db->get('user')->result_array();
         $data['username'] = $this->db->get('user')->result_array();
         $data['password'] = $this->db->get('user')->result_array();
-        $data['role'] = $this->db->get('user')->result_array();
-        $data['active'] = $this->db->get('user')->result_array();
+        $data['role']     = $this->db->get('user')->result_array();
+        $data['active']   = $this->db->get('user')->result_array();
 
 
         $this->form_validation->set_rules('no_urut', 'No Urut', 'required');
@@ -155,12 +155,12 @@ class Supervisor extends CI_Controller
 
         $password = md5($this->input->post('password'));
         $data = [
-            'divisi' => $this->input->post('divisi'),
-            'nama' => $this->input->post('nama'),
+            'divisi'   => $this->input->post('divisi'),
+            'nama'     => $this->input->post('nama'),
             'username' => $this->input->post('username'),
             'password' => $password,
-            'role' => $this->input->post('role'),
-            'active' => $this->input->post('active')
+            'role'     => $this->input->post('role'),
+            'active'   => $this->input->post('active')
         ];
         $this->db->insert('user', $data);
         $this->session->set_flashdata('message', '<div class="alert alert-success alert-dismissable" role="alert"><button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>User added!</div>');
@@ -169,20 +169,20 @@ class Supervisor extends CI_Controller
 
     public function edit_user()
     {
-        $id = $this->input->post('id');
-        $divisi = $this->input->post('divisi');
-        $nama = $this->input->post('nama');
+        $id       = $this->input->post('id');
+        $divisi   = $this->input->post('divisi');
+        $nama     = $this->input->post('nama');
         $username = $this->input->post('username');
         $password = $this->input->post('password');
-        $role = $this->input->post('role');
-        $active = $this->input->post('active');
+        $role     = $this->input->post('role');
+        $active   = $this->input->post('active');
         $ArrUpdate = array(
-            'divisi' => $divisi,
-            'nama' => $nama,
+            'divisi'   => $divisi,
+            'nama'     => $nama,
             'username' => $username,
             'password' => $password,
-            'role' => $role,
-            'active' => $active,
+            'role'     => $role,
+            'active'   => $active,
 
         );
         $this->usermaster_model->updateUser($id, $ArrUpdate);
@@ -316,11 +316,7 @@ class Supervisor extends CI_Controller
     {
         $this->load->model('Category_model', 'category_model');
         $data['category'] = $this->category_model->getCategory();
-        // $this->load->model('Upbmaster_model', 'upbmaster_model');
-        // $data['kode_bangunan'] = $this->upbmaster_model->kode_bangunan();
-        // $data['ruangan'] = $this->db->get('tbl_ruangan')->result_array();
-        // $data['subklasifikasi'] = $this->upbmaster_model->kode_barang();
-        // $data['jenisbarang'] = $this->db->get('jenis_barang')->result_array();
+      
 
     
         $id = $this->input->post('id');
@@ -370,21 +366,21 @@ class Supervisor extends CI_Controller
 
     public function edit_pelaporan()
     {
-        $id = $this->input->post('id');
-        $no_tiket = $this->input->post('no_tiket');
-        $perihal = $this->input->post('perihal');
-        $status = $this->input->post('status');
+        $id         = $this->input->post('id');
+        $no_tiket   = $this->input->post('no_tiket');
+        $perihal    = $this->input->post('perihal');
+        $status     = $this->input->post('status');
         $status_ccs = $this->input->post('status_ccs');
-        $kategori = $this->input->post('kategori');
-        $priority = $this->input->post('priority');
+        $kategori   = $this->input->post('kategori');
+        $priority   = $this->input->post('priority');
       
         $ArrUpdate = array(
-            'no_tiket' => $no_tiket,
-            'perihal' => $perihal,
-            'status' => $status,
+            'no_tiket'   => $no_tiket,
+            'perihal'    => $perihal,
+            'status'     => $status,
             'status_ccs' => $status_ccs,
-            'kategori' => $kategori,
-            'priority' => $priority,
+            'kategori'   => $kategori,
+            'priority'   => $priority,
 
         );
         $this->pelaporan_model->updateCP($id, $ArrUpdate);
