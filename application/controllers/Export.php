@@ -44,7 +44,7 @@ class Export extends CI_Controller
         $data['waktu'] = $this->dpengajuan_model->getPengajuanDetail($waktu, $divisi, $minggu);
         $data['dpengajuan'] = $this->dpengajuan_model->getPengajuanTemp($waktu, $divisi, $minggu);
         $data['user_id'] = $divisi;
-        $data['minggu'] = $minggu;
+        $data['minggu']  = $minggu;
         $data['tanggal'] = $waktu;
 
         $this->load->view('cetak/laporan_pengajuan', $data);
@@ -56,7 +56,7 @@ class Export extends CI_Controller
         $data['waktu'] = $this->upb_model->getPengajuanDetail($waktu, $divisi, $minggu);
         $data['dpengajuan'] = $this->upb_model->getPengajuanTemp($waktu, $divisi, $minggu);
         $data['user_id'] = $divisi;
-        $data['minggu'] = $minggu;
+        $data['minggu']  = $minggu;
         $data['tanggal'] = $waktu;
 
         $this->load->view('cetak/laporan_pengajuan_upb', $data);

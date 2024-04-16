@@ -191,8 +191,8 @@ class User extends CI_Controller
     {
         $this->load->model('User_model', 'user_model');
         $data['user'] = $this->user_model->getUserDetail($id);
-        $nama = $this->input->post('nama');
-        $username = $this->input->post('username');
+        $nama         = $this->input->post('nama');
+        $username     = $this->input->post('username');
 
         $this->db->set('nama', $nama);
         $this->db->set('username', $username);
@@ -219,9 +219,9 @@ class User extends CI_Controller
             $this->load->view('templates/footer');
         } else {
             $current_passwordmd5 = $this->input->post('current_password');
-            $new_passwordmd5 = $this->input->post('new_password1');
-            $current_password = MD5($current_passwordmd5);
-            $new_password = MD5($new_passwordmd5);
+            $new_passwordmd5     = $this->input->post('new_password1');
+            $current_password    = MD5($current_passwordmd5);
+            $new_password        = MD5($new_passwordmd5);
             if ($current_password != $data['user']['password']) {
                 $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert"> <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>Wrong current password!</div>');
                 redirect('user/changepassword');
@@ -255,9 +255,9 @@ class User extends CI_Controller
             $this->load->view('templates/footer');
         } else {
             $current_passwordmd5 = $this->input->post('current_password');
-            $new_passwordmd5 = $this->input->post('new_password1');
-            $current_password = MD5($current_passwordmd5);
-            $new_password = MD5($new_passwordmd5);
+            $new_passwordmd5     = $this->input->post('new_password1');
+            $current_password    = MD5($current_passwordmd5);
+            $new_password        = MD5($new_passwordmd5);
             if ($current_password != $data['user']['password']) {
                 $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert"> <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>Wrong current password!</div>');
                 redirect('user/changepassword_klien');
@@ -289,9 +289,9 @@ class User extends CI_Controller
             $this->load->view('templates/footer');
         } else {
             $current_passwordmd5 = $this->input->post('current_password');
-            $new_passwordmd5 = $this->input->post('new_password1');
-            $current_password = MD5($current_passwordmd5);
-            $new_password = MD5($new_passwordmd5);
+            $new_passwordmd5     = $this->input->post('new_password1');
+            $current_password    = MD5($current_passwordmd5);
+            $new_password        = MD5($new_passwordmd5);
             if ($current_password != $data['user']['password']) {
                 $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert"> <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>Wrong current password!</div>');
                 redirect('user/changepassword_hd1');
@@ -323,9 +323,9 @@ class User extends CI_Controller
             $this->load->view('templates/footer');
         } else {
             $current_passwordmd5 = $this->input->post('current_password');
-            $new_passwordmd5 = $this->input->post('new_password1');
-            $current_password = MD5($current_passwordmd5);
-            $new_password = MD5($new_passwordmd5);
+            $new_passwordmd5     = $this->input->post('new_password1');
+            $current_password    = MD5($current_passwordmd5);
+            $new_password        = MD5($new_passwordmd5);
             if ($current_password != $data['user']['password']) {
                 $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert"> <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>Wrong current password!</div>');
                 redirect('user/changepassword_hd2');
@@ -357,9 +357,9 @@ class User extends CI_Controller
             $this->load->view('templates/footer');
         } else {
             $current_passwordmd5 = $this->input->post('current_password');
-            $new_passwordmd5 = $this->input->post('new_password1');
-            $current_password = MD5($current_passwordmd5);
-            $new_password = MD5($new_passwordmd5);
+            $new_passwordmd5     = $this->input->post('new_password1');
+            $current_password    = MD5($current_passwordmd5);
+            $new_password        = MD5($new_passwordmd5);
             if ($current_password != $data['user']['password']) {
                 $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert"> <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>Wrong current password!</div>');
                 redirect('user/changepassword_hd3');
@@ -391,9 +391,9 @@ class User extends CI_Controller
             $this->load->view('templates/footer');
         } else {
             $current_passwordmd5 = $this->input->post('current_password');
-            $new_passwordmd5 = $this->input->post('new_password1');
-            $current_password = MD5($current_passwordmd5);
-            $new_password = MD5($new_passwordmd5);
+            $new_passwordmd5     = $this->input->post('new_password1');
+            $current_password    = MD5($current_passwordmd5);
+            $new_password        = MD5($new_passwordmd5);
             if ($current_password != $data['user']['password']) {
                 $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert"> <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>Wrong current password!</div>');
                 redirect('user/changepassword_hd4');
@@ -425,9 +425,9 @@ class User extends CI_Controller
             $this->load->view('templates/footer');
         } else {
             $current_passwordmd5 = $this->input->post('current_password');
-            $new_passwordmd5 = $this->input->post('new_password1');
-            $current_password = MD5($current_passwordmd5);
-            $new_password = MD5($new_passwordmd5);
+            $new_passwordmd5     = $this->input->post('new_password1');
+            $current_password    = MD5($current_passwordmd5);
+            $new_password        = MD5($new_passwordmd5);
             if ($current_password != $data['user']['password']) {
                 $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert"> <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>Wrong current password!</div>');
                 redirect('user/changepassword_implementator');
@@ -459,9 +459,9 @@ class User extends CI_Controller
             $this->load->view('templates/footer');
         } else {
             $current_passwordmd5 = $this->input->post('current_password');
-            $new_passwordmd5 = $this->input->post('new_password1');
-            $current_password = MD5($current_passwordmd5);
-            $new_password = MD5($new_passwordmd5);
+            $new_passwordmd5     = $this->input->post('new_password1');
+            $current_password    = MD5($current_passwordmd5);
+            $new_password        = MD5($new_passwordmd5);
             if ($current_password != $data['user']['password']) {
                 $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert"> <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>Wrong current password!</div>');
                 redirect('user/changepassword_support');
@@ -493,9 +493,9 @@ class User extends CI_Controller
             $this->load->view('templates/footer');
         } else {
             $current_passwordmd5 = $this->input->post('current_password');
-            $new_passwordmd5 = $this->input->post('new_password1');
-            $current_password = MD5($current_passwordmd5);
-            $new_password = MD5($new_passwordmd5);
+            $new_passwordmd5     = $this->input->post('new_password1');
+            $current_password    = MD5($current_passwordmd5);
+            $new_password        = MD5($new_passwordmd5);
             if ($current_password != $data['user']['password']) {
                 $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert"> <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>Wrong current password!</div>');
                 redirect('user/changepassword_dbs');
@@ -527,9 +527,9 @@ class User extends CI_Controller
             $this->load->view('templates/footer');
         } else {
             $current_passwordmd5 = $this->input->post('current_password');
-            $new_passwordmd5 = $this->input->post('new_password1');
-            $current_password = MD5($current_passwordmd5);
-            $new_password = MD5($new_passwordmd5);
+            $new_passwordmd5     = $this->input->post('new_password1');
+            $current_password    = MD5($current_passwordmd5);
+            $new_password        = MD5($new_passwordmd5);
             if ($current_password != $data['user']['password']) {
                 $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert"> <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>Wrong current password!</div>');
                 redirect('user/changepassword_crd');
@@ -561,9 +561,9 @@ class User extends CI_Controller
             $this->load->view('templates/footer');
         } else {
             $current_passwordmd5 = $this->input->post('current_password');
-            $new_passwordmd5 = $this->input->post('new_password1');
-            $current_password = MD5($current_passwordmd5);
-            $new_password = MD5($new_passwordmd5);
+            $new_passwordmd5     = $this->input->post('new_password1');
+            $current_password    = MD5($current_passwordmd5);
+            $new_password        = MD5($new_passwordmd5);
             if ($current_password != $data['user']['password']) {
                 $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert"> <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>Wrong current password!</div>');
                 redirect('user/changepassword_development');

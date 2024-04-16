@@ -14,3 +14,9 @@ SELECT no_tiket, COUNT(*) AS 'total tiket' FROM pelaporan GROUP BY no_tiket
 
 #COUNT status where
 SELECT status, COUNT(*) AS 'status' FROM pelaporan WHERE status='Solved by HD1' GROUP BY status 
+
+SELECT nama, COUNT(nama) AS jumlah
+FROM pelaporan
+GROUP BY nama
+ORDER BY jumlah DESC
+LIMIT 1;

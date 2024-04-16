@@ -67,7 +67,7 @@ class Helpdesk3 extends CI_Controller
             $nama            = $this->input->post('nama');
             $perihal         = $this->input->post('perihal');
             $status          = 'Solved by HD3';
-            $status_ccs      ='CLOSE';
+            $status_ccs      = 'CLOSE';
             $keterangan      = $this->input->post('keterangan');
             $handle_by       = $this->input->post('handle_by');
             $ArrUpdate       = array(
@@ -100,7 +100,7 @@ class Helpdesk3 extends CI_Controller
              $nama            = $this->input->post('nama');
              $perihal         = $this->input->post('perihal');
              $status          = 'Forward From Helpdesk 3';
-             $status_ccs      ='HANDLE';
+             $status_ccs      = 'HANDLE';
              $handle_by       = $this->input->post('handle_by');
              $keterangan      = $this->input->post('keterangan');
              $ArrUpdate       = array(

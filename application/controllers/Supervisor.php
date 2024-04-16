@@ -243,9 +243,9 @@ class Supervisor extends CI_Controller
     {
         $this->load->model('Klienpelaporan_model', 'klienpelaporan_model');
         // $data['kategori'] = $this->db->get('pelaporan')->result_array();
-        $data['category'] = $this->category_model->getCategory();
+        $data['category']      = $this->category_model->getCategory();
         $this->load->model('User_model', 'user_model');
-        $data['user'] = $this->user_model->getDataUser();
+        $data['user']          = $this->user_model->getDataUser();
         $data['datapelaporan'] = $this->klienpelaporan_model->getKlienPelaporanAdd();
 
         $this->load->view('templates/header');
@@ -304,7 +304,7 @@ class Supervisor extends CI_Controller
         $this->load->model('Klienpelaporan_model', 'klienpelaporan_model');
         $data['datapelaporan'] = $this->klienpelaporan_model->ambil_id_pelaporan($id);
         $this->load->model('Category_model', 'category_model');
-        $data['category'] = $this->category_model->getCategory();
+        $data['category']      = $this->category_model->getCategory();
         
         $this->load->view('templates/header');
         $this->load->view('templates/supervisor_sidebar');

@@ -139,6 +139,7 @@ class Auth extends CI_Controller
                  $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert"> <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>Wrong Username/Password</div>');
                 redirect('auth');
             }
+
         }
     }
 
@@ -160,6 +161,17 @@ class Auth extends CI_Controller
         $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert"> <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>You have been logout!</div>');
         redirect('auth');
     }
+
+    // public function logout()
+    // {
+    //     date_default_timezone_set("ASIA/JAKARTA");
+    //     $date = array('last_login' => date('Y-m-d H:i:s'));
+    //     $id = $this->session->userdata('id');
+    //     $this->Auth_model->logout($date, $id);
+    //     $this->session->sess_destroy();
+    //     $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert"> <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>You have been logout!</div>');
+    //     redirect('auth');
+    // }
 
     public function forgot_password()
     {

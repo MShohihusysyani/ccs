@@ -10,4 +10,11 @@ class auth_model extends CI_Model
                     ";
         return $this->db->query($query)->result_array();
     }
+
+    public function logout($date, $id)
+{
+    $this->db->where($this->id, $id);
+    $this->db->update($this->table, $date);
+    
+}
 }

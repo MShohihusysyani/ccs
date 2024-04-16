@@ -102,7 +102,7 @@ class Helpdesk4 extends CI_Controller
              $nama            = $this->input->post('nama');
              $perihal         = $this->input->post('perihal');
              $status          = 'Forward From Helpdesk 4';
-             $status_ccs      ='HANDLE';
+             $status_ccs      = 'HANDLE';
              $handle_by       = $this->input->post('handle_by');
              $keterangan      = $this->input->post('keterangan');
              $ArrUpdate       = array(

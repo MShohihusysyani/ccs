@@ -102,7 +102,7 @@ class Implementator extends CI_Controller
          $nama            = $this->input->post('nama');
          $perihal         = $this->input->post('perihal');
          $status          = 'Forwad To Helpdesk 1';
-         $status_ccs      ='CLOSE';
+         $status_ccs      = 'HANDLE';
          $handle_by       = $this->input->post('handle_by');
          $keterangan      = $this->input->post('keterangan');
          $ArrUpdate       = array(
@@ -133,7 +133,7 @@ class Implementator extends CI_Controller
           $nama            = $this->input->post('nama');
           $perihal         = $this->input->post('perihal');
           $status          = 'Forward To Helpdesk 2';
-          $status_ccs      ='HANDLE';
+          $status_ccs      = 'HANDLE';
           $handle_by       = $this->input->post('handle_by');
           $keterangan      = $this->input->post('keterangan');
           $ArrUpdate       = array(
@@ -164,7 +164,7 @@ class Implementator extends CI_Controller
            $nama            = $this->input->post('nama');
            $perihal         = $this->input->post('perihal');
            $status          = 'Forward To Helpdesk 3';
-           $status_ccs      ='HANDLE';
+           $status_ccs      = 'HANDLE';
            $handle_by       = $this->input->post('handle_by');
            $keterangan      = $this->input->post('keterangan');
            $ArrUpdate       = array(
@@ -195,7 +195,7 @@ class Implementator extends CI_Controller
            $nama            = $this->input->post('nama');
            $perihal         = $this->input->post('perihal');
            $status          = 'Forward To Helpdesk 4';
-           $status_ccs      ='HANDLE';
+           $status_ccs      = 'HANDLE';
            $handle_by       = $this->input->post('handle_by');
            $keterangan      = $this->input->post('keterangan');
            $ArrUpdate       = array(

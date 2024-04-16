@@ -106,7 +106,7 @@
                              </div>
                              <?php } ?>
 
-                           
+                     
                            
                          </div>
                      </div>
@@ -118,31 +118,94 @@
          <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
                     <div class="card">
                         <div class="header">
-                            <h2>BAR CHART</h2>
+                            <h2>Priority</h2>
                             <ul class="header-dropdown m-r--5">
                                 <li class="dropdown">
                                     <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
                                         <i class="material-icons">more_vert</i>
                                     </a>
-                                    <ul class="dropdown-menu pull-right">
-                                        <li><a href="javascript:void(0);">Action</a></li>
-                                        <li><a href="javascript:void(0);">Another action</a></li>
-                                        <li><a href="javascript:void(0);">Something else here</a></li>
-                                    </ul>
                                 </li>
                             </ul>
                         </div>
                         <div class="body">
-                            <canvas id="bar_chart" height="150"></canvas>
+                            <canvas id="bar_chart"></canvas>
+                        </div>
+                    </div>
+                </div>
+
+           
+
+                <!-- TIKET -->
+                <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+                    <div class="card">
+                        <div class="body bg-cyan">
+                            <div class="font-bold m-b--35"> TICKETS</div>
+                            <ul class="dashboard-stat-list">
+                                <li>
+                                    TODAY
+                                    <span class="pull-right"><b><?= total_today()?></b> <medium>TICKETS</medium></span>
+                                </li>
+                                <li>
+                                    YESTERDAY
+                                    <span class="pull-right"><b><?= total_yesterday()?></b> <medium>TICKETS</medium></span>
+                                </li>
+                                <li>
+                                    LAST WEEK
+                                    <span class="pull-right"><b><?= total_lastweek()?></b> <medium>TICKETS</medium></span>
+                                </li>
+                                <li>
+                                    THIS MONTH
+                                    <span class="pull-right"><b><?= total_thismonth()?></b> <medium>TICKETS</medium></span>
+                                </li>
+                                <li>
+                                    LAST MONTH
+                                    <span class="pull-right"><b><?= total_lastmonth()?></b> <medium>TICKETS</medium></span>
+                                </li>
+                                <li>
+                                    ALL
+                                    <span class="pull-right"><b><?= total_all()?></b> <medium>TICKETS</medium></span>
+                                </li>
+                            </ul>
                         </div>
                     </div>
                 </div>
  </section>
 
- <!-- <script>
-$(function () {
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<script type="text/javascript">
+  const ctx = document.getElementById('bar_chart').getContext('2d');
+  new Chart(ctx, {
+    type: 'bar',
+    data: {
+      labels: ['High', 'Medium', 'Low'],
+      datasets: [{
+        label: '#Priority',
+        data: [<?=total_high()?>,<?=total_medium()?>,<?=total_low()?>],
+        backgroundColor: ['rgba(233, 30, 99, 0.8)', '#FFC107', 'rgba(0, 188, 212, 0.8)'],
+        borderWidth: 1
+      }]
+    },
+    options: {
+        events: ['click'],
+      scales: {
+        y: {
+          beginAtZero: true
+        }
+      }
+}
+  });
+</script>
+
+
+
+
+<!-- <script src="<?= base_url('vendor/AdminBSBMaterialDesign-master/'); ?>plugins/chartjs/Chart.bundle.js"></script>
+<script>
+    $(function () {
+  
     new Chart(document.getElementById("bar_chart").getContext("2d"), getChartJs('bar'));
-    
 });
 
 function getChartJs(type) {
@@ -154,8 +217,8 @@ function getChartJs(type) {
             data: {
                 labels: ["January", "February", "March", "April", "May", "June", "July"],
                 datasets: [{
-                    label: "High",
-                    data: [<?= $pelaporan['priority']?>],
+                    label: "My First dataset",
+                    data: [65, 59, 80, 81, 56, 55, 40],
                     backgroundColor: 'rgba(0, 188, 212, 0.8)'
                 }, {
                         label: "My Second dataset",
@@ -169,41 +232,8 @@ function getChartJs(type) {
             }
         }
     }
- 
-return config;
+    return config;
 }
- </script> -->
+</script> -->
 
-<script>
-    // PRIORITY
-    const priority = document.getElementById('bar_chart');
-
-    <?php foreach ($datapelaporan as $dp) : ?>
-        $nama = ['<?= $value['priority']; ?>']
-
-        var chart_rumah_kabupaten = new Chart(priority, {
-            type: 'bar',
-            data: {
-                labels: ["January", "February", "March", "April", "May", "June",],
-                datasets: [{
-                    label: 'Priority High',
-                    data: [<?= $dp['priority']; ?>],
-                    backgroundColor: ['#f56954', '#00a65a', '#f39c12', '#00c0ef', '#3c8dbc', '#d2d6de'],
-                    borderWidth: 1
-                
-                    
-                }],
-            },
-            options: {
-                scales: {
-                    yAxes: [{
-                        ticks: {
-                            beginAtZero: true
-                        }
-                    }]
-                }
-            }
-        });
-    <?php endforeach; ?>
-</script>
  

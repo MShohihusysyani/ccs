@@ -46,7 +46,7 @@
                                     <tr>
                                         <th>No</th>
                                         <th>No Tiket</th>
-                                        <th>Tangal</th>
+                                        <th>Tanggal</th>
                                         <th>Nama Klien</th>
                                         <th>Perihal</th>
                                         <th>Category</th>
@@ -115,8 +115,6 @@
                                             <!-- <td><?= $dp['status'];?></td> -->
                                             <td><?= tanggal_indo($dp['waktu_approve']);?></td>
                                            
-
-
                                         </tr>
                                         <?php endforeach; ?>
                                 </tbody>
