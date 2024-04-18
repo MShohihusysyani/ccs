@@ -142,7 +142,7 @@
 
                                             <?php $this->session->set_userdata('referred_from', current_url()); ?>
                                             <div class="btn btn-sm btn-warning">
-											<a href="javascript:;"
+											<a href="javascript:;" 
 											data-id="<?= $dp['id']; ?>"
 											data-no_tiket="<?= $dp['no_tiket']; ?>"
 											data-waktu_pelaporan="<?= $dp['waktu_pelaporan']; ?>"
