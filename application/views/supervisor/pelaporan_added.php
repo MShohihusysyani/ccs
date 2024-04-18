@@ -142,11 +142,21 @@
 
                                             <?php $this->session->set_userdata('referred_from', current_url()); ?>
                                             <div class="btn btn-sm btn-warning">
-                                                <div class="demo-google-material-icon" data-toggle="modal"
-                                                    data-target="#editModalCP<?= $dp['id']; ?>"> <i
+											<a href="javascript:;" 
+											data-id="<?= $dp['id']; ?>"
+											data-no_tiket="<?= $dp['no_tiket']; ?>"
+											data-waktu_pelaporan="<?= $dp['waktu_pelaporan']; ?>"
+											data-nama="<?= $dp['nama']; ?>"
+											data-perihal="<?= $dp['perihal']; ?>"
+											data-status="<?= $dp['status']; ?>"
+											data-status_ccs="<?= $dp['status_ccs']; ?>"
+											data-kategory="<?= $dp['kategori']; ?>"
+											data-priority="<?= $dp['priority']; ?>"
+											data-maxday="<?= $dp['maxday']; ?>"
+											data-toggle="modal" data-target="#editModalCP"> <i
                                                         class="material-icons">edit</i> <span
-                                                        class="icon-name">Edit</span>
-                                                </div>
+                                                        class="icon-name">Edit</span></a>
+                                                
                                             </div>
 
                                             <!-- <a class="btn btn-sm btn-info"
@@ -207,10 +217,8 @@
 
         
 <!-- MODAL EDIT -->
-    <?php
-    $no = 0;
-    foreach ($dataAdded as $dp) : $no++; ?>
-    <div class="modal fade" id="editModalCP<?= $dp['id']; ?>" tabindex="-1" role="dialog">
+
+    <div class="modal fade" id="editModalCP" tabindex="-1" role="dialog">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
@@ -218,55 +226,55 @@
                 </div>
                 <div class="modal-body">
                     <?= form_open_multipart('supervisor/edit_pelaporan') ?>
-                    <input type="hidden" name="id" value="<?= $dp['id']; ?>">
+                    <input type="hidden" name="id" value="">
                     <div class="body">
                         <form class="form-horizontal">
                         
                         <div class="form-group form-float">
                             <div class="form-line">
-                                <input value="<?= $dp['no_tiket']; ?>" type="text" id="no_tiket" name="no_tiket" class="form-control" readonly>
+                                <input value="" type="text" id="no_tiket" name="no_tiket" class="form-control" readonly>
                                 <label class="form-label">No tiket</label>
                             </div>
                         </div>
 
                         <div class="form-group form-float">
                             <div class="form-line">
-                                <input value="<?= $dp['waktu_pelaporan']; ?>" type="text" id="waktu_pelaporan" name="waktu_pelaporan" class="form-control" readonly>
+                                <input value="" type="text" id="waktu_pelaporan" name="waktu_pelaporan" class="form-control" readonly>
                                 <label class="form-label">Waktu Pelaporan</label>
                             </div>
                         </div>
 
                         <div class="form-group form-float">
                             <div class="form-line">
-                                <input value="<?= $dp['nama']; ?>" type="text" id="nama" name="nama" class="form-control" readonly>
+                                <input value="" type="text" id="nama" name="nama" class="form-control" readonly>
                                 <label class="form-label">Nama Klien</label>
                             </div>
                         </div>
 
                         <div class="form-group form-float">
                             <div class="form-line">
-                                <input value="<?= $dp['perihal']; ?>" type="text" id="perihal" name="perihal" class="form-control" readonly>
+                                <input value="" type="text" id="perihal" name="perihal" class="form-control" readonly>
                                 <label class="form-label">Perihal</label>
                             </div>
                         </div>
 
                         <div class="form-group form-float">
                             <div class="form-line">
-                                <input value="<?= $dp['status']; ?>" type="text" id="status" name="status" class="form-control" readonly>
+                                <input value="" type="text" id="status" name="status" class="form-control" readonly>
                                 <label class="form-label">Status</label>
                             </div>
                         </div>
 
                         <div class="form-group form-float">
                             <div class="form-line">
-                                <input value="<?= $dp['status_ccs']; ?>" type="text" id="status_ccs" name="status_ccs" class="form-control" readonly>
+                                <input value="" type="text" id="status_ccs" name="status_ccs" class="form-control" readonly>
                                 <label class="form-label">Status CCS</label>
                             </div>
                         </div>
 
                         <div class="form-group form-float">
                                 <select id="priority" name="priority" class="form-control">
-                                        <option value="">-- Please select Priority--</option>
+                                        <option selected disabled>-- Please select Priority--</option>
                                         <option value="Low">Low</option>
                                         <option value="Medium">Medium</option>
                                         <option value="High">High</option>
@@ -275,7 +283,7 @@
 
                         <div class="form-group form-float">
                             <div class="form-line">
-                                <input value="<?= $dp['maxday'];?>" type="text" id="maxday" name="maxday" class="form-control" >
+                                <input value="" type="text" id="maxday" name="maxday" class="form-control" >
                                 <label class="form-label">Max day</label>
                             </div>
                         </div>
@@ -292,34 +300,6 @@
                                     <?php endforeach; ?>
                                 </select>
                         </div>
-<!-- 
-                        <div class="form-group form-float">
-                                
-                                <input type="text" data-toggle="modal" data-target="#defaultModalNamaKategori"
-                                    name="kategori" id="kategori" placeholder="category"
-                                    class="form-control ui-autocomplete-input" value="" autocomplete="off" readonly>
-                                <input type="hidden" id="id" name="id">
-                            
-                        </div> -->
-
-                        <!-- <label for="category">Category</label>
-                        <div class="form-group">
-                            <div class="form-line">
-                                <input type="text" data-toggle="modal" data-target="#defaultModalNamaKategori"
-                                    name="kategori" id="kategori" placeholder="Pilih Kategori" 
-                                    class="form-control ui-autocomplete-input" value="" autocomplete="on" readonly>
-                                <input type="hidden" id="id" name="id">
-                            </div>
-                        </div> -->
-
-                        <!-- <div class="form-group form-float">
-                            <div class="form-line">
-                                <input type="text" data-toggle="modal" data-target="#defaultModalNamaKategori" name="kategori" id="kategori" placeholder="" 
-                                    class="form-control ui-autocomplete-input" value="" autocomplete="on" readonly>
-                                <input type="hidden" id="id" name="id">
-                                <label class="form-label">Category</label>
-                            </div>
-                        </div> -->
 
                             <div class="modal-footer">
                                 <button type="submit" class="btn btn-link waves-effect">SAVE
@@ -334,7 +314,6 @@
             </div>
         </div>
     </div>
-    <?php endforeach ?>
  
 
 
@@ -385,7 +364,7 @@
         </div>
     </div>
 
-    //AUTO INPUT MAX DAY AFTER SELECT PRIORITY
+    <!-- AUTO INPUT MAX DAY AFTER SELECT PRIORITY -->
     
 <script type="text/javascript">
    //Get references to the select and input elements
@@ -425,5 +404,41 @@
         $('#defaultModalNamaKategori').modal('hide');
     })
 });
+</script>
+<script>
+			$(document).ready(function() {
+
+		// Untuk sunting
+		$('#editModalCP').on('show.bs.modal', function(event) {
+			var div = $(event.relatedTarget) // Tombol dimana modal di tampilkan
+			var modal = $(this)
+
+			// Isi nilai pada field
+			modal.find('#id').attr("value", div.data('id'));
+			modal.find('#no_tiket').attr("value", div.data('no_tiket'));
+			modal.find('#waktu_pelaporan').attr("value", div.data('waktu_pelaporan'));
+			modal.find('#nama').attr("value", div.data('nama'));
+			modal.find('#perihal').attr("value", div.data('perihal'));
+			modal.find('#status').attr("value", div.data('status'));
+			modal.find('#status_ccs').attr("value", div.data('status_ccs'));
+			// modal.find('#priority').attr("value", div.data('priority'));
+			modal.find('#priority option:selected').text(div.data('priority'));
+			modal.find('#maxday').attr("value", div.data('maxday'));
+			// modal.find('#kategori').attr("value", div.data('kategori'));
+			modal.find('#kategori option:selected').text(div.data('kategori'));
+			// modal.find('#bprnama').attr("value", div.data('bprnama'));
+			// modal.find('#bprsandi').attr("value", div.data('bprsandi'));
+			// modal.find('#judul').attr("value", div.data('judul'));
+			// modal.find('#headline').attr("value", div.data('headline'));
+			// modal.find('#gbr_utama').attr("src", '<?= base_url() ?>assets/images/berita/' + div.data('gbr_utama'));
+			// modal.find('#gbrtmbhn1').attr("src", '<?= base_url() ?>assets/images/berita/' + div.data('gbrtmbhn1'));
+			// modal.find('#gbrtmbhn2').attr("src", '<?= base_url() ?>assets/images/berita/' + div.data('gbrtmbhn2'));
+			// modal.find('#gbrtmbhn3').attr("src", '<?= base_url() ?>assets/images/berita/' + div.data('gbrtmbhn3'));
+			// modal.find('#linkberita').val(div.data('linkberita'));
+			// modal.find('#kategori option:selected').text(div.data('kategori'));
+			
+		});
+
+	});
 </script>
 
