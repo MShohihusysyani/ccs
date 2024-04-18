@@ -21,6 +21,7 @@ class Helpdesk extends CI_Controller
     public function pelaporan()
     {
         $data['user'] = $this->db->get_where('user', ['username' => $this->session->userdata('username')])->row_array();
+        // $data['handle_by'] = $this->db->get_where('user', ['handle_by' => $this->session->userdata('handle_by')])->row_array();
         $this->load->model('Klienpelaporan_model', 'klienpelaporan_model');
         // $data['nama_kategori'] = $this->db->get('pelaporan')->result_array();
         // $data['category'] = $this->category_model->getNamakategori();

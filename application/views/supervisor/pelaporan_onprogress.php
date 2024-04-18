@@ -34,6 +34,7 @@
                                             <th>Attachment</th>
                                             <th>Category</th>
                                             <th>Priority</th>
+                                            <th>Max Day</th>
                                             <th>Status CCS</th>
                                             <th>Status</th>
                                           
@@ -49,6 +50,7 @@
                                         <th>Attachment</th>
                                         <th>Category</th>
                                         <th>Priority</th>
+                                        <th>Max Day</th>
                                         <th>Status CCS</th>
                                         <th>Status</th>
                                     </tr>
@@ -73,6 +75,7 @@
                                             <td> <a
                                                 href="<?= base_url('assets/files/' . $dp['file']); ?>"><?= $dp['file']; ?></a>
                                             </td>
+                                            <!-- <td><iframe src="<?= base_url('assets/files/'. $dp['file']);?>"  width="100%" height="600px" frameborder="0"><?= $dp['file'];?></iframe></td> -->
                                             <td><?= $dp['kategori'];?></td>
                                             <td>
                                                 <?php if ($dp['priority'] == 'Low') : ?>
@@ -83,6 +86,21 @@
 
                                                 <?php elseif ($dp['priority'] == 'High') : ?>
                                                     <span class="label label-danger">High</span>
+                                               
+
+                                                <?php else : ?>
+
+                                                <?php endif; ?>
+                                            </td>
+                                            <td>
+                                                <?php if ($dp['maxday'] == '90') : ?>
+                                                    <span class="label label-info">90</span>
+
+                                                <?php elseif ($dp['maxday'] == '60') : ?>
+                                                    <span class="label label-warning">60</span>
+
+                                                <?php elseif ($dp['maxday'] == '7') : ?>
+                                                    <span class="label label-danger">7</span>
                                                
 
                                                 <?php else : ?>

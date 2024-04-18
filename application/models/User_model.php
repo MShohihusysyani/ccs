@@ -37,11 +37,9 @@ class User_model extends CI_Model
         $this->db->update('user', $data);
     }
 
-    public function getJabatan()
+    public function deleteUser($id)
     {
-        $query = "SELECT *
-                    FROM jabatan
-                    ";
-        return $this->db->query($query)->result_array();
+        $this->db->where('id', $id);
+        $this->db->delete('user');
     }
 }

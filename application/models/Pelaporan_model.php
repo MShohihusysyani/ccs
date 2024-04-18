@@ -134,7 +134,7 @@ class Pelaporan_model extends CI_Model
     public function getAllCategory()
     {
        $query = "SELECT kategori, COUNT(*) AS 'total', waktu_pelaporan FROM pelaporan WHERE status_ccs='FINISH' GROUP BY kategori";
-        return $this->db->query($query)->result_array();
+       return $this->db->query($query)->result_array();
     }
 
     public function getDateKategori($tgla, $tglb)

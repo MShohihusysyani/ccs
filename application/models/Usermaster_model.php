@@ -11,9 +11,6 @@ class Usermaster_model extends CI_Model
         return $this->db->query($query)->result_array();
     }
 
-    
-
-
     public function hapus($id)
     {
         $this->db->where('id', $id);
@@ -25,5 +22,6 @@ class Usermaster_model extends CI_Model
         $this->db->where('id', $id);
         $this->db->update('user', $data);
     }
+
 
 }

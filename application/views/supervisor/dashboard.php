@@ -113,8 +113,8 @@
 
                  </div>
              </div>
-         </div>
-         <!-- DIAGRAM -->
+             
+              <!-- DIAGRAM -->
          <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
                     <div class="card">
                         <div class="header">
@@ -132,8 +132,8 @@
                         </div>
                     </div>
                 </div>
+                <!-- end diagram -->
 
-           
 
                 <!-- TIKET -->
                 <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
@@ -153,14 +153,17 @@
                                     LAST WEEK
                                     <span class="pull-right"><b><?= total_lastweek()?></b> <medium>TICKETS</medium></span>
                                 </li>
-                                <li>
-                                    THIS MONTH
-                                    <span class="pull-right"><b><?= total_thismonth()?></b> <medium>TICKETS</medium></span>
-                                </li>
+
                                 <li>
                                     LAST MONTH
                                     <span class="pull-right"><b><?= total_lastmonth()?></b> <medium>TICKETS</medium></span>
                                 </li>
+
+                                <li>
+                                    THIS MONTH
+                                    <span class="pull-right"><b><?= total_thismonth()?></b> <medium>TICKETS</medium></span>
+                                </li>
+                                
                                 <li>
                                     ALL
                                     <span class="pull-right"><b><?= total_all()?></b> <medium>TICKETS</medium></span>
@@ -169,6 +172,56 @@
                         </div>
                     </div>
                 </div>
+                <!-- end ticket -->
+
+                <!-- Jumlah BPR -->
+             <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                    <div class="card">
+                        <div class="header">
+                            <h2>KLIEN INFO</h2>
+                            <ul class="header-dropdown m-r--5">
+                                <li class="dropdown">
+                                    <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                                        <i class="material-icons">more_vert</i>
+                                    </a>
+                                    
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="body">
+                            <div class="table-responsive">
+                                <table class="table table-bordered table-striped table-hover js-basic-example dataTable">
+                                    <thead>
+                                        <tr>
+                                            <th>#</th>
+                                            <th>Klien</th>
+                                            <th>Total Pelaporan</th>
+                                            
+                                            
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <?php
+                                        $no = 1;
+                                        foreach ($data_bpr as $bp) : ?>
+                                        <tr>
+                                            <td><?= $no++?></td>
+                                            <td><?= $bp['nama'];?></td>
+                                            <td><?= $bp['jumlah'];?></td>
+                                            
+                                        </tr>
+                                        <?php endforeach; ?>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- END KLIEN INFO -->
+              
+         </div>
+
+        
  </section>
 
 
@@ -183,12 +236,12 @@
       datasets: [{
         label: '#Priority',
         data: [<?=total_high()?>,<?=total_medium()?>,<?=total_low()?>],
-        backgroundColor: ['rgba(233, 30, 99, 0.8)', '#FFC107', 'rgba(0, 188, 212, 0.8)'],
+        // backgroundColor: ['rgba(233, 30, 99, 0.8)', '#FFC107', 'rgba(0, 188, 212, 0.8)'],
+        backgroundColor:['rgb(255, 99, 132)', 'rgb(255, 205, 86)','rgb(54, 162, 235)',],
         borderWidth: 1
       }]
     },
     options: {
-        events: ['click'],
       scales: {
         y: {
           beginAtZero: true
@@ -197,9 +250,6 @@
 }
   });
 </script>
-
-
-
 
 <!-- <script src="<?= base_url('vendor/AdminBSBMaterialDesign-master/'); ?>plugins/chartjs/Chart.bundle.js"></script>
 <script>
@@ -235,5 +285,3 @@ function getChartJs(type) {
     return config;
 }
 </script> -->
-
- 

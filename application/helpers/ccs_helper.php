@@ -202,9 +202,7 @@ function total_bpr()
     $ci = get_instance();
     $query = "SELECT nama, COUNT(nama) AS jumlah
     FROM pelaporan
-    GROUP BY nama
-    ORDER BY jumlah DESC
-    LIMIT 1;";
+    GROUP BY nama";
     $data = $ci->db->query($query)->row_array();
     $total = $data['jumlah'];
     $kodeBaru = $total;

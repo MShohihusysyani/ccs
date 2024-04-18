@@ -1,6 +1,5 @@
-
-    <!-- Button trigger modal -->
-    <section class="content">
+ 
+<section class="content">
     <div class="container-fluid">
         <div class="block-header">
             <h2>
@@ -38,6 +37,7 @@
                                             <th>Attachment</th>
                                             <th>Category</th>
                                             <th>Priority</th>
+                                            <th>Max Day</th>
                                             <th>Status CCS</th>
                                             <th>Status</th>
                                             <th>Aksi</th>
@@ -52,7 +52,8 @@
                                         <th>Perihal</th>
                                         <th>Attachment</th>
                                         <th>Category</th>
-                                        <th>Priority</th>  
+                                        <th>Priority</th>
+                                        <th>Max Day</th>  
                                         <th>Status CCS</th>
                                         <th>Status</th>
                                         <th>Aksi</th>                                  
@@ -62,7 +63,7 @@
 
                                 <?php
                                         $no = 1;
-                                        foreach ($datapelaporan as $dp) : ?>
+                                        foreach ($dataAdded as $dp) : ?>
                                         <tr>
                                             <td><?= $no++?></td>
                                             <!-- <td><a
@@ -88,6 +89,21 @@
 
                                                 <?php elseif ($dp['priority'] == 'High') : ?>
                                                     <span class="label label-danger">High</span>
+                                               
+
+                                                <?php else : ?>
+
+                                                <?php endif; ?>
+                                            </td>
+                                            <td>
+                                                <?php if ($dp['maxday'] == '90') : ?>
+                                                    <span class="label label-info">90</span>
+
+                                                <?php elseif ($dp['maxday'] == '60') : ?>
+                                                    <span class="label label-warning">60</span>
+
+                                                <?php elseif ($dp['maxday'] == '7') : ?>
+                                                    <span class="label label-danger">7</span>
                                                
 
                                                 <?php else : ?>
@@ -127,7 +143,7 @@
                                             <?php $this->session->set_userdata('referred_from', current_url()); ?>
                                             <div class="btn btn-sm btn-warning">
                                                 <div class="demo-google-material-icon" data-toggle="modal"
-                                                    data-target="#editModal<?= $dp['id']; ?>"> <i
+                                                    data-target="#editModalCP<?= $dp['id']; ?>"> <i
                                                         class="material-icons">edit</i> <span
                                                         class="icon-name">Edit</span>
                                                 </div>
@@ -193,8 +209,8 @@
 <!-- MODAL EDIT -->
     <?php
     $no = 0;
-    foreach ($datapelaporan as $dp) : $no++; ?>
-    <div class="modal fade" id="editModal<?= $dp['id']; ?>" tabindex="-1" role="dialog">
+    foreach ($dataAdded as $dp) : $no++; ?>
+    <div class="modal fade" id="editModalCP<?= $dp['id']; ?>" tabindex="-1" role="dialog">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
@@ -248,8 +264,6 @@
                             </div>
                         </div>
 
-                       
-
                         <div class="form-group form-float">
                                 <select id="priority" name="priority" class="form-control">
                                         <option value="">-- Please select Priority--</option>
@@ -257,6 +271,13 @@
                                         <option value="Medium">Medium</option>
                                         <option value="High">High</option>
                                </select> 
+                        </div>
+
+                        <div class="form-group form-float">
+                            <div class="form-line">
+                                <input value="<?= $dp['maxday'];?>" type="text" id="maxday" name="maxday" class="form-control" >
+                                <label class="form-label">Max day</label>
+                            </div>
                         </div>
 
                         <div class="form-group form-float">
@@ -314,6 +335,7 @@
         </div>
     </div>
     <?php endforeach ?>
+ 
 
 
 <!-- modal cari kategori -->
@@ -363,10 +385,36 @@
         </div>
     </div>
 
+    //AUTO INPUT MAX DAY AFTER SELECT PRIORITY
+    
+<script type="text/javascript">
+   //Get references to the select and input elements
+    const select = document.getElementById('priority');
+    const input = document.getElementById('maxday');
+
+    // Add event listener to the select element
+    select.addEventListener('change', function() {
+        // Set the value of the input field to the selected option's value
+        if (select.value == "Low") {
+            input.value = "90";
+        } else if (select.value == "Medium") {
+            input.value = "60";
+        } else if (select.value == "High") {
+            input.value = "7";
+        } else {
+            input.value = "";
+            
+        }
+        
+    });
+</script>
+
+
+
     <!-- Script -->
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+ <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script> 
 <!-- jQuery UI -->
-<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script> 
 <script>
     $(document).ready(function() {
     $(document).on('click', '#pilih3', function() {
@@ -378,3 +426,4 @@
     })
 });
 </script>
+

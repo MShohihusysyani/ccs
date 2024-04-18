@@ -12,9 +12,13 @@ class Supervisor extends CI_Controller
 
     public function index()
     {
+        $this->load->model('Supervisor_model', 'supervisor_model');
+        $data['data_bpr'] = $this->supervisor_model->getKlien();
+        
+        
         $this->load->view('templates/header');
         $this->load->view('templates/supervisor_sidebar');
-        $this->load->view('supervisor/dashboard');
+        $this->load->view('supervisor/dashboard', $data);
         $this->load->view('templates/footer');
     }
     #CATEGORY
@@ -205,6 +209,7 @@ class Supervisor extends CI_Controller
         $data['nama_kategori'] = $this->db->get('pelaporan')->result_array();
         $data['nama'] = $this->db->get('pelaporan')->result_array();
         $data['datapelaporan'] = $this->klienpelaporan_model->getKlienPelaporan();
+        
         $this->load->view('templates/header');
         $this->load->view('templates/supervisor_sidebar');
         $this->load->view('supervisor/pelaporan',$data);
@@ -246,7 +251,7 @@ class Supervisor extends CI_Controller
         $data['category']      = $this->category_model->getCategory();
         $this->load->model('User_model', 'user_model');
         $data['user']          = $this->user_model->getDataUser();
-        $data['datapelaporan'] = $this->klienpelaporan_model->getKlienPelaporanAdd();
+        $data['dataAdded'] = $this->klienpelaporan_model->getKlienPelaporanAdd();
 
         $this->load->view('templates/header');
         $this->load->view('templates/supervisor_sidebar');
@@ -373,14 +378,16 @@ class Supervisor extends CI_Controller
         $status_ccs = $this->input->post('status_ccs');
         $kategori   = $this->input->post('kategori');
         $priority   = $this->input->post('priority');
+        $maxday     = $this->input->post('maxday');
       
         $ArrUpdate = array(
             'no_tiket'   => $no_tiket,
             'perihal'    => $perihal,
             'status'     => $status,
             'status_ccs' => $status_ccs,
-            'kategori'   => $kategori,
             'priority'   => $priority,
+            'kategori'   => $kategori,
+            'maxday'     => $maxday
 
         );
         $this->pelaporan_model->updateCP($id, $ArrUpdate);
@@ -401,9 +408,10 @@ class Supervisor extends CI_Controller
     //         'status' => $this->input->post('status'),
     //         'status_ccs' => $this->input->post('status_ccs'),
     //         'priority' => $this->input->post('priority'),
+    //         'maxday' => $this->input->post('maxday'),
     //         'kategori' => $this->input->post('kategori')
 
-
+  
     //     );
     //     $this->pelaporan_model->updateCP($id, $ArrUpdate);
     //      $this->session->set_flashdata('pesan', 'Success Edited!');
@@ -766,4 +774,6 @@ class Supervisor extends CI_Controller
             $this->load->view('supervisor/rekap_progres', $data);
             $this->load->view('templates/footer');
         }
+
+     
 }
