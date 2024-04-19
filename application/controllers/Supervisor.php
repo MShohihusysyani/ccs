@@ -390,6 +390,7 @@ class Supervisor extends CI_Controller
             'maxday'     => $maxday
 
         );
+
         $this->pelaporan_model->updateCP($id, $ArrUpdate);
         // $this->session->set_flashdata('pesan', 'Success Edited!');
         $this->session->set_flashdata('message', '<div class="alert alert-info" role="alert"> <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>Priority and Category Updated</div>');
